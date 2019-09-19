@@ -17,12 +17,10 @@ from django.contrib import admin
 from django.urls import path, include, re_path
 # home_view import ettik view.py adresinde olan
 from home.views import home_view
-from contact.views import contact_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # sol taraf adres sağ taraf girilecek view
     path('', home_view),
     path('tracking/', include('tracking.urls')),
-    path('contact/', contact_view)
 ]
