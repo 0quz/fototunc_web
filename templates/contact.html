@@ -1,0 +1,31 @@
+<!-- base.html ile genişlettik -->
+{% extends 'base.html' %}
+
+{% block title %}Contact - {{ block.super }}{% endblock %}
+{% block body %}
+<div class="container-fluid p-3">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d752.3721643812635!2d28.82606332924961!3d41.036441810290924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa51d6f58ad09%3A0xb3526c4f5ec9af93!2zU3TDvGR5byBUdW7Dpw!5e0!3m2!1str!2str!4v1567944489091!5m2!1str!2str"
+        width="100%" height="450" frameborder="0" style="border:0" allowfullscreen=""></iframe>
+</div>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="contact-info">
+				<p>Güneşli, 63/B, Üsküp Cd, 34212 Bağcılar/İstanbul</p>
+
+				<p>studyotunc@windowslive.com</p>
+
+				<p>0212 655 55 65</p>
+
+				<ul>
+					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+				</ul>
+			</div> <!-- /.contact-info -->
+		</div>
+	</div> <!-- /.row -->
+</div> <!-- /.container -->
+
+{% endblock %}

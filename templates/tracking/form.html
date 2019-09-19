@@ -1,0 +1,17 @@
+<!-- base.html ile genişlettik -->
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+<div class="form-style2">
+    <div class="container p-3 mb-2 bg-light text-dark">
+    <form method="POST">
+        <!-- # POST methodu ile csrf token aynı anda kullanılır -->
+        {% csrf_token %}
+        <h1> Takip Formu </h1>
+        {{ form|crispy }}
+        <input class="btn btn-primary" type="submit" value="Oluştur">
+    </form>
+    </div>
+</div>
+{% endblock %}

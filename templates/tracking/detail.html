@@ -1,0 +1,33 @@
+<!-- base.html ile genişlettik -->
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="card text-center">
+  <div class="card-header">
+    {{ tracking.name }} {{ tracking.surname }}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Takip Numarası : {{ tracking.tracking_number }}</h5>
+    <p class="card-text">{{ tracking.information }}</p>
+      {% if request.user.is_authenticated %}
+      <p class="card-text">Durum : {{ tracking.status }}</p>
+      <a href="{{ tracking.get_update_url }}" class="btn btn-info">Düzenle</a>
+      <a href="{{ tracking.get_delete_url }}" class="btn btn-danger">Sil</a>
+      {% endif %}
+  </div>
+  <div class="card-footer text-muted">
+    Oluşturma Tarihi : {{ tracking.publishing_date }}
+  </div>
+</div>
+
+    <!--
+    {{ tracking.id }} <br>
+    {{ tracking.name }} <br>
+    {{ tracking.surname }} <br>
+    {{ tracking.tracking_number }} <br>
+    {{ tracking.information }} <br>
+    {{ tracking.publishing_date }} <br>
+    -->
+{% endblock %}
+

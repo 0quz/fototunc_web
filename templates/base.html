@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Foto Tunç{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fixed.css'%}">
+    <!--
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    -->
+</head>
+
+<body data-spy="scroll" data-target="#navbarResponsive">
+    {% include 'header.html'  %}
+
+    {% include 'messages.html' %}
+    <!-- base template parent diğer templateler ise child templatetir. -->
+    {% block body %}
+
+    {% endblock %}
+
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="https://use.fontawesome.com/releases/v5.5.0/js/all.js"></script>
+
+</body>
+</html>
