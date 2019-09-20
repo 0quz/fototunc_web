@@ -13,7 +13,7 @@
       {% if request.user.is_authenticated %}
       <p class="card-text">Durum : {{ tracking.status }}</p>
       <a href="{{ tracking.get_update_url }}" class="btn btn-info">Düzenle</a>
-      <a href="{{ tracking.get_delete_url }}" class="btn btn-danger">Sil</a>
+      <a href="{{ tracking.get_delete_url }}" onclick="return confirm('Silmek istediğinizden eminmisiniz ?');" class="btn btn-danger">Sil</a>
       {% endif %}
   </div>
   <div class="card-footer text-muted">

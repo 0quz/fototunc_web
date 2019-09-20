@@ -33,7 +33,7 @@
         {% else %}
 
         <form class="form" action="http://127.0.0.1:8000/tracking/index/" method="get">
-            <input class="form-style" type="search" placeholder="Takip numarası" aria-label="Search" name="guest" value="{{ request.GET.guest }}">
+            <input class="form-style" type="search" placeholder="Takip numarası" aria-label="Search" name="q" value="{{ request.GET.q }}">
             <button class="btn btn-outline-light btn-lg" type="submit">Sorgula</button>
         </form>
 

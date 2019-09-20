@@ -35,7 +35,8 @@
       <td><a href="{{ tracking.get_absolute_url }}" class="btn btn-primary">Detaylar</a></td>
       {% if request.user.is_authenticated %}
       <td><a href="{{ tracking.get_update_url }}" class="btn btn-info">Düzenle</a></td>
-      <td><a href="{{ tracking.get_delete_url }}" class="btn btn-danger">Sil</a></td>
+      <td><a href="{{ tracking.get_update_url }}" class="btn btn-info">Hazır</a></td>
+      <td><a href="{{ tracking.get_delete_url }}" onclick="return confirm('Silmek istediğinizden eminmisiniz ?');" class="btn btn-danger">Sil</a></td>
       {% endif %}
     </tr>
   </tbody>

@@ -16,7 +16,7 @@ def tracking_index(request):
     # eğer misafirse
     if not request.user.is_authenticated:
         tracking_list = Tracking.objects.all()
-        query2 = request.GET.get('guest')
+        query2 = request.GET.get('q')
         # ve query2 için misafir aramada tam takip kodu girerse listele
         if query2:
             tracking_list = tracking_list.filter(tracking_number__exact=query2).distinct()
