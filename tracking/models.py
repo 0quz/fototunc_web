@@ -41,6 +41,9 @@ class Tracking(models.Model):
         # 'id' detail.urlsinde tanıttığımız id
         return reverse('tracking:delete', kwargs={'slug': self.slug})
 
+    def get_ready_url(self):
+        return reverse('tracking:ready', kwargs={'slug': self.slug})
+
     # bu kısım aynı slugdan yani tracking_numberdan varsa sağ kısmına +1 sayısı ekler
     #def get_unique_slug(self):
     #    slug = slugify(self.tracking_number)

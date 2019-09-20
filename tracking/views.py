@@ -7,6 +7,7 @@ from django.utils.text import slugify
 from django.db.models import Q
 from django.core.mail import send_mail
 
+
 # Create your views here.
 # Ana sayfa düzenleme görünüm
 # request kullanıcı ile ilgili bilgiler getiren parametre
@@ -21,7 +22,7 @@ def tracking_index(request):
         if query2:
             tracking_list = tracking_list.filter(tracking_number__exact=query2).distinct()
         else:
-        # eğer index'e başka yoldan ulaşmaya çalışırsa hata mesajı gönder
+            # eğer index'e başka yoldan ulaşmaya çalışırsa hata mesajı gönder
             return Http404()
         return render(request, 'tracking/index.html', {'trackings': tracking_list})
 
@@ -37,7 +38,7 @@ def tracking_index(request):
                 Q(surname__icontains=query)
             ).distinct()
 
-        paginator = Paginator(tracking_list, 12) # Show 5 contacts per page
+        paginator = Paginator(tracking_list, 12)  # Show 5 contacts per page
 
         page = request.GET.get('sayfa')
         trackings = paginator.get_page(page)
@@ -86,7 +87,12 @@ def tracking_create(request):
         tracking = form.save(commit=False)
         # request nesnesinin yardımı ile istek yapan kullanıcı geliyor bunu da yazar olarak atıyoruz
         tracking.user = request.user
-        # send_mail('Başlık', tracking.tracking_number, 'oguz.28414@gmail.com', ['nestuhurke@desoz.com'], fail_silently=False)
+        send_mail('Fotoğraf Takip Bilgileriniz',
+        'Sayın {} {}, {} takip numaralı fotoğrafınızın durumunu www.tuncfoto.com adresi üzerinden öğrenebilirsiniz. Bizi tercih ettiğiniz için teşekkürederiz. İyi günler dileriz.'
+        .format(tracking.name, tracking.surname, tracking.tracking_number),
+        'oguz.28414@gmail.com',
+        [tracking.email],
+        fail_silently=False)
         tracking.save()
         messages.success(request, 'Başarılı bir şekilde oluşturuldu.')
         # kayıt edilen dosyanın içeriğine git
@@ -126,4 +132,18 @@ def tracking_delete(request, slug):
     tracking = get_object_or_404(Tracking, slug=slug)
     tracking.delete()
     # yönlendirme yaptık
+    return redirect('tracking:index')
+
+
+def tracking_ready(request, slug):
+    if not request.user.is_authenticated:
+        return Http404()
+
+    tracking = get_object_or_404(Tracking, slug=slug)
+    send_mail('Fotoğrafınız Hazır!',
+              'Sayın {} {}, {} takip numaralı fotoğrafınız hazırdır. En yakın zamanda dükkanımızdan teslim alabilirsiniz. Detaylı bilgi için, www.fototunc.com adresini ziyaret edebilirisiniz.'
+              .format(tracking.name, tracking.surname, tracking.tracking_number),
+              'oguz.28414@gmail.com',
+              [tracking.email],
+              fail_silently=False,)
     return redirect('tracking:index')

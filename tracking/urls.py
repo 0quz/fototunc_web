@@ -32,4 +32,5 @@ urlpatterns = [
     re_path(r'^(?P<slug>[\w-]+)/update/$', tracking_update, name='update'),
     # id alıp yönlendirme yapmak için
     re_path(r'^(?P<slug>[\w-]+)/delete/$', tracking_delete, name='delete'),
+    re_path(r'^(?P<slug>[\w-]+)/ready/$', tracking_ready, name='ready'),
 ]
