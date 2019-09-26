@@ -58,28 +58,6 @@ def tracking_detail(request, slug):
 def tracking_create(request):
     if not request.user.is_authenticated:
         return Http404()
-    # if request.method == "POST":
-    #    print(request.POST)
-
-    # name = request.POST.get('name')
-    # surname = request.POST.get('surname')
-    # tracking_number = request.POST.get('tracking_number')
-
-    """
-    if request.method == "POST":
-        # Formdan gelen bilgileri kaydet
-        # form değişkeni post nesnesi haline geldi
-        form = TrackingForm(request.POST)
-        if form.is_valid():
-            form.save()
-    else:
-        # Formu kullanıcıya göster
-        form = TrackingForm()
-
-    context = {
-        'form': form,
-    }
-    """
 
     form = TrackingForm(request.POST or None)
     if form.is_valid():
