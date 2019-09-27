@@ -1,4 +1,4 @@
-# fototunc_website
+# fototunc_django_website
 Gerekli kütüphaneler
 
 pip install Django==2.2.5 <br>
